@@ -1,0 +1,39 @@
+{
+	"$schema": "https://raw.githubusercontent.com/CeladonSS13/Shiptest/beta-dev/_maps/_mod_celadon/ship_config_schema.json",
+	"map_name": "Oct-class Medical Shuttle",
+	"map_short_name": "Oct",
+	"description": "tbwo",
+	"map_path": "_maps/_mod_celadon/shuttles/nanotrasen/nanotrasen_oct.dmm",
+	"enabled": true,
+	"limit": 1,
+	"sensor_range": 4,
+	"prefix": "NTMSV",
+	"faction": "/datum/faction/nt",
+	"tags": [
+		"Медицинское"
+	],
+	"namelists": [
+		"GENERAL",
+		"SPACE",
+		"NANOTRASEN"
+	],
+	"job_slots": {
+		"Medical Director": {
+			"outfit": "/datum/outfit/job/cel/nanotrasen/cmo/deforest_cmo",
+			"officer": true,
+			"slots": 1
+		},
+		"Security Detail": {
+			"outfit": "/datum/outfit/job/cel/nanotrasen/security/vigilitas",
+			"slots": 1
+		},
+		"Medical Doctor": {
+			"outfit": "/datum/outfit/job/cel/nanotrasen/doctor/deforest_medic",
+			"slots": 1
+		},
+		"Paramedic": {
+			"outfit": "/datum/outfit/job/cel/nanotrasen/paramedic/deforest_medic",
+			"slots": 2
+		}
+	}
+}
