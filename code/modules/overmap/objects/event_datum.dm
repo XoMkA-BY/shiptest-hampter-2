@@ -327,9 +327,13 @@
 	spread_chance = 30
 	chain_rate = 3
 	interference_power = 15
-	var/zap_flag = ZAP_STORM_FLAGS
+// [CELADON-EDIT] - DANGER_STORM
+	var/zap_flag = ZAP_MINOR_STORM_FLAGS
 	var/max_damage = 3000
 	var/min_damage = 1000
+	var/max_zap_strike = 8
+	var/min_zap_strike = 4
+// [/CELADON-EDIT]
 
 /datum/overmap/event/electric/alter_token_appearance()
 	icon_suffix = "[rand(1, 4)]"
@@ -338,14 +342,27 @@
 		token.color = current_overmap.hazard_primary_color
 	current_overmap.post_edit_token_state(src)
 
+// [CELADON-EDIT]- DANGER_STORM
 /datum/overmap/event/electric/affect_ship(datum/overmap/ship/controlled/S)
+	if(!(locate(S) in get_nearby_overmap_objects()))
+		return
 	var/datum/virtual_level/ship_vlevel = S.shuttle_port.get_virtual_level()
 	var/turf/source = ship_vlevel.get_side_turf(pick(GLOB.cardinals))
-	tesla_zap(source, 32, rand(min_damage, max_damage), zap_flag)
 
-	for(var/mob/poor_crew as anything in GLOB.player_list)
-		if(S.shuttle_port.is_in_shuttle_bounds(poor_crew))
-			poor_crew.playsound_local(poor_crew, THUNDER_SOUND, rand(min_damage, max_damage))
+	var/zap_strike = rand(min_zap_strike, max_zap_strike)
+	for(var/i = 1 to zap_strike)
+		if(!(locate(S) in get_nearby_overmap_objects()))
+			return
+
+		tesla_zap(source, 32, rand(min_damage, max_damage) * 100, zap_flag)
+
+		for(var/mob/poor_crew as anything in GLOB.player_list)
+			if(S.shuttle_port.is_in_shuttle_bounds(poor_crew))
+				poor_crew.playsound_local(poor_crew, THUNDER_SOUND, rand(min_damage, max_damage))
+
+		if(i < zap_strike)
+			sleep(1 SECONDS)
+// [/CELADON-EDIT]
 
 
 /datum/overmap/event/electric/modify_emptyspace_mapgen(datum/overmap/dynamic/our_planet)
@@ -360,6 +377,8 @@
 	chain_rate = 2
 	max_damage = 1000
 	min_damage = 500
+	max_zap_strike = 4	// [CELADON-EDIT] - DANGER_STORM
+	min_zap_strike = 2	// [CELADON-EDIT] - DANGER_STORM
 
 /datum/overmap/event/electric/major
 	name = "electrical storm (major)"
@@ -369,7 +388,11 @@
 	chain_rate = 6
 	max_damage = 5000
 	min_damage = 3000
-	zap_flag = ZAP_DEFAULT_FLAGS
+// [CELADON-EDIT] - DANGER_STORM
+	zap_flag = ZAP_MAJOR_STORM_FLAGS
+	max_zap_strike = 12
+	min_zap_strike = 6
+// [/CELADON-EDIT]
 
 /datum/overmap/event/nebula
 	name = "nebula"
@@ -583,7 +606,9 @@
 /datum/overmap/event/anomaly/affect_ship(datum/overmap/ship/controlled/S)
 	var/area/source_area = pick(S.shuttle_port.shuttle_areas)
 	var/source_object = pick(source_area.contents)
-	new /obj/effect/spawner/random/anomaly/storm(get_turf(source_object))
+	// [CELADON-EDIT] - ANOMALY_BALANCE
+	new /obj/effect/spawner/random/anomaly/storm/short(get_turf(source_object)) // new /obj/effect/spawner/random/anomaly/storm(get_turf(source_object))
+	// [/CELADON-EDIT]
 	for(var/mob/M as anything in GLOB.player_list)
 		if(S.shuttle_port.is_in_shuttle_bounds(M))
 			M.playsound_local(M, 'sound/effects/bamf.ogg', 100)
@@ -615,7 +640,7 @@ GLOBAL_LIST_INIT(overmap_event_pick_list, list(
 	// /datum/overmap/event/rad = 20,
 	// /datum/overmap/event/rad/major = 20,
 	// [/CELADON-EDIT]
-	/datum/overmap/event/anomaly = 10
+	// /datum/overmap/event/anomaly = 10 // [CELADON-REMOVE] - ANOMALY_BALANCE - хоть и странно, что Солнце спавнит аномалии... Но почему бы и нет. Может Солнце уже давно не Солнце, а лишь его имитация, посланная запертыми в иных мирах.
 ))
 
 ///RADIATION STORM - explodes your organics
