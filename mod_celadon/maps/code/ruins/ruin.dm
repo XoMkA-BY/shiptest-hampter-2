@@ -103,6 +103,21 @@
 	suffix = "beach_bunkers.dmm"
 	cost = 2
 	ruin_tags = list(RUIN_TAG_MEDIUM_COMBAT, RUIN_TAG_MEDIUM_LOOT, RUIN_TAG_LIVEABLE)
+
+/datum/map_template/ruin/beachplanet/frontie_moat
+	name = "Frontiersmen Moat"
+	id = "frontie_moat"
+	description = "A frontiersman-built moat village. Not the worst place to live."
+	suffix = "beach_surface_frontie_moat.dmm"
+	cost = 3
+
+/datum/map_template/ruin/beachplanet/gunsmith
+	name = "Ramzi Gunsmith"
+	id = "gunsmith"
+	description = "A decadent gunsmithing den jointly owned by an outfit of the Ramzi Clique and a corrupt NGR official. Hidden within a cave."
+	suffix = "beach_underground_gunsmith.dmm"
+	cost = 3
+
 //							///
 //		MARK: Icemoon
 //							///
@@ -310,7 +325,7 @@
 	name = "Space Ikea AI Shipment"
 	description = "A Space Ikea Brand AI Core and Necessities Crate, it seems to have missed its intended target."
 	suffix = "jungle_surface_ikea_ai.dmm"
-	cost = 2
+	cost = 3
 
 /datum/map_template/ruin/jungle/coffinpirate
 	id = "coffinpirate"
@@ -370,6 +385,20 @@
 	description = "A ninja shrine."
 	suffix = "jungle_surface_ninjashrine.dmm"
 	cost = 2
+
+/datum/map_template/ruin/jungle/serene_hunt
+	name = "Serene Hunt"
+	id = "senere_hunt"
+	description = "Serene Outdoor's premier hunting resort and outlet. Well, it was until all the animals got out anyways."
+	suffix = "jungle_serene_hunts.dmm"
+	cost = 4
+
+/datum/map_template/ruin/jungle/ramzi_base	//Оффовская ремапнутая Syndicate
+	name = "Ramzi Base"
+	id = "razmi_base"
+	description = "An ICW-era nuclear bunker formerly operated by Ramzi Clique."
+	suffix = "jungle_surface_ramzi.dmm"
+	cost = 3
 
 //							///
 //		MARK: Lavaland
@@ -575,6 +604,20 @@
 	suffix = "rockplanet_rustbase.dmm"
 	cost = 1
 
+/datum/map_template/ruin/rockplanet/stash_river_valley
+	name = "Frontier River Valley Stash"
+	id = "river_valley_stash"
+	description = "A frontiersman drug stash in the midst of being buried."
+	suffix = "rockplanet_river_valley_stash.dmm"
+	cost = 3
+
+/datum/map_template/ruin/rockplanet/trench_complex_front	// somme (название dmm у оффов) = trench complex (та же руина, но уже в их конфиге)
+	name = "Frontier Trench Complex"
+	id = "trench_complex"
+	description = "Frontiersmen have dug in like ticks to the planet's surface."
+	suffix = "rockplanet_trench_complex.dmm"
+	cost = 4
+
 //							///
 //		MARK: Space
 //							///
@@ -695,6 +738,20 @@
 	suffix = "scrapstation.dmm"
 	name = "Ramzi Scrapping Station"
 	description = "A Syndicate FOB dating back to the ICW, now home to the Ramzi Clique and their latest haul."
+
+/datum/map_template/ruin/space/onehalftwo
+	name = "Nanotrasen Refueling Station"
+	id = "onehald_two"
+	description = "An abandoned Nanotrasen refueling post evacuated after an attempted ACLF plasmaflood. Since then, hivebots and a small Ramzi Clique salvage team have attempted to claim the station."
+	suffix = "onehalftwo.dmm"
+	cost = 3
+
+/datum/map_template/ruin/space/videepstorage
+	name = "Vigilitas Deepstorage"
+	id = "vi_deepstorage"
+	description = "A Vigilitas blacksite for holding important and suspicious cargo."
+	suffix = "vi_deepstorage.dmm"
+	cost = 3
 
 //							///
 //		MARK: WastePlanet
@@ -883,6 +940,20 @@
 	suffix = "whitesands_surface_trainyard.dmm"
 	cost = 3
 	ruin_tags = list(RUIN_TAG_HARD_COMBAT, RUIN_TAG_MEDIUM_LOOT, RUIN_TAG_SHELTER)
+
+/datum/map_template/ruin/whitesands/nomads_stop
+	name = "Hermit Nomads Stop"
+	id = "nomads-stop"
+	description = "A set of structures born of ancient prefabs and quick-pour cement, turned into a place for trade on the planet's surface."
+	suffix = "whitesands_surface_nomads_stop.dmm"
+	cost = 3
+
+/datum/map_template/ruin/whitesands/settlements_raid
+	name = "Frontier Settlement Raid"
+	id = "settlements-raid"
+	description = "A settlement leading a solitary salvaging life under the direction of a former Gorlex Marauder, now being raided by the brutal Frontiersmen Fleet."
+	suffix = "whitesands_surface_settlement_raid.dmm"
+	cost = 4
 
 //							///
 //		MARK: Plasma

@@ -5095,6 +5095,7 @@
 "Yj" = (
 /obj/item/bedsheet/clown,
 /obj/item/clothing/head/clownmitre,
+/turf/open/space,
 /area/ship/medical)
 "Yl" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -5211,7 +5212,7 @@
 /turf/open/floor/engine/airless,
 /area/ship/engineering/atmospherics)
 "Zt" = (
-/obj/machinery/vending/wallmed{
+/obj/machinery/vending/wallmed/ship{
 	pixel_y = 28
 	},
 /obj/structure/window/reinforced/spawner{
